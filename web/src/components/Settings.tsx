@@ -133,10 +133,17 @@ export function Settings({ settingsManager }: SettingsProps) {
         <section className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
           <button
             onClick={() => setShowVoiceAlerts(!showVoiceAlerts)}
-            className="w-full flex items-center justify-between text-xl font-semibold text-gray-900 dark:text-white"
+            className="w-full flex items-center justify-between text-xl font-semibold text-gray-900 dark:text-white hover:opacity-80 transition-opacity"
           >
             <span>Voice Alerts</span>
-            <span>{showVoiceAlerts ? '▼' : '▶'}</span>
+            <svg
+              className={`w-5 h-5 transition-transform ${showVoiceAlerts ? 'rotate-180' : ''}`}
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
           </button>
 
           {showVoiceAlerts && (
