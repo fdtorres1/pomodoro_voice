@@ -2,6 +2,8 @@
 
 The web version of PomodoroVoice, built with React, TypeScript, and Vite.
 
+**Version:** 1.0.0
+
 ## Quick Start
 
 ```bash
