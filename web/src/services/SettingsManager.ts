@@ -28,9 +28,14 @@ export class SettingsManager {
         if (!parsed.voiceAlerts) {
           parsed.voiceAlerts = createAppSettings().voiceAlerts;
         }
-        // Ensure sessionsBeforeLongBreak exists (backward compatibility)
-        if (parsed.sessionsBeforeLongBreak === undefined) {
+        // Ensure sessionsBeforeLongBreak exists and is valid (backward compatibility)
+        if (parsed.sessionsBeforeLongBreak === undefined || 
+            parsed.sessionsBeforeLongBreak === null ||
+            isNaN(Number(parsed.sessionsBeforeLongBreak))) {
           parsed.sessionsBeforeLongBreak = 4;
+        } else {
+          // Ensure it's within valid range
+          parsed.sessionsBeforeLongBreak = Math.max(1, Math.min(10, Number(parsed.sessionsBeforeLongBreak)));
         }
         return parsed;
       }

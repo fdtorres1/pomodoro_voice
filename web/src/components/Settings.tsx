@@ -71,7 +71,8 @@ export function Settings({ settingsManager }: SettingsProps) {
               <div className="flex items-center gap-2 flex-1">
                 <button
                   onClick={() => {
-                    const newValue = Math.max(1, settings.sessionsBeforeLongBreak - 1);
+                    const currentValue = settings.sessionsBeforeLongBreak ?? 4;
+                    const newValue = Math.max(1, currentValue - 1);
                     updateSettings({ sessionsBeforeLongBreak: newValue });
                   }}
                   className="px-3 py-1 bg-gray-200 dark:bg-gray-700 rounded hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
@@ -79,11 +80,12 @@ export function Settings({ settingsManager }: SettingsProps) {
                   −
                 </button>
                 <span className="w-16 text-center text-gray-900 dark:text-white font-medium">
-                  {settings.sessionsBeforeLongBreak}
+                  {settings.sessionsBeforeLongBreak ?? 4}
                 </span>
                 <button
                   onClick={() => {
-                    const newValue = Math.min(10, settings.sessionsBeforeLongBreak + 1);
+                    const currentValue = settings.sessionsBeforeLongBreak ?? 4;
+                    const newValue = Math.min(10, currentValue + 1);
                     updateSettings({ sessionsBeforeLongBreak: newValue });
                   }}
                   className="px-3 py-1 bg-gray-200 dark:bg-gray-700 rounded hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
