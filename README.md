@@ -2,6 +2,12 @@
 
 A native macOS Pomodoro timer app with AI voice alerts powered by ElevenLabs.
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+## Repository
+
+🔗 **GitHub**: [https://github.com/fdtorres1/pomodoro_voice](https://github.com/fdtorres1/pomodoro_voice)
+
 ## Features
 
 - **Pomodoro Timer**: Standard Pomodoro technique cycles (25 min focus, 5 min short break, 15 min long break after 4 sessions)
