@@ -46,7 +46,7 @@ function App() {
       {/* Main Content */}
       <main>
         {currentView === 'timer' ? (
-          <Timer timerManager={timerManager} />
+          <Timer timerManager={timerManager} settingsManager={settingsManager} />
         ) : (
           <Settings settingsManager={settingsManager} />
         )}

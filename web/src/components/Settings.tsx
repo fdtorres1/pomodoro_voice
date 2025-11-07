@@ -58,6 +58,49 @@ export function Settings({ settingsManager }: SettingsProps) {
           </div>
         </section>
 
+        {/* Pomodoro Settings */}
+        <section className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+          <h2 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">
+            Pomodoro Settings
+          </h2>
+          <div className="space-y-4">
+            <div className="flex items-center gap-4">
+              <label className="text-sm font-medium text-gray-700 dark:text-gray-300 flex-shrink-0">
+                Sessions before long break
+              </label>
+              <div className="flex items-center gap-2 flex-1">
+                <button
+                  onClick={() => {
+                    const newValue = Math.max(1, settings.sessionsBeforeLongBreak - 1);
+                    updateSettings({ sessionsBeforeLongBreak: newValue });
+                  }}
+                  className="px-3 py-1 bg-gray-200 dark:bg-gray-700 rounded hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+                >
+                  −
+                </button>
+                <span className="w-16 text-center text-gray-900 dark:text-white font-medium">
+                  {settings.sessionsBeforeLongBreak}
+                </span>
+                <button
+                  onClick={() => {
+                    const newValue = Math.min(10, settings.sessionsBeforeLongBreak + 1);
+                    updateSettings({ sessionsBeforeLongBreak: newValue });
+                  }}
+                  className="px-3 py-1 bg-gray-200 dark:bg-gray-700 rounded hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+                >
+                  +
+                </button>
+              </div>
+              <span className="text-xs text-gray-500 dark:text-gray-400 flex-shrink-0">
+                (1-10)
+              </span>
+            </div>
+            <p className="text-xs text-gray-500 dark:text-gray-400">
+              Number of focus sessions before taking a long break. Default is 4 (standard Pomodoro technique).
+            </p>
+          </div>
+        </section>
+
         {/* Audio Settings */}
         <section className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
           <h2 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">

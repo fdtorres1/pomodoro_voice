@@ -19,6 +19,20 @@ struct SettingsView: View {
                     .textFieldStyle(.roundedBorder)
             }
             
+            Section("Pomodoro Settings") {
+                HStack {
+                    Text("Sessions before long break")
+                    Spacer()
+                    Stepper(value: $settingsManager.settings.sessionsBeforeLongBreak, in: 1...10) {
+                        Text("\(settingsManager.settings.sessionsBeforeLongBreak)")
+                            .frame(width: 30)
+                    }
+                }
+                Text("Number of focus sessions before taking a long break. Default is 4 (standard Pomodoro technique).")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+            }
+            
             Section("Audio Settings") {
                 HStack {
                     Text("Volume")

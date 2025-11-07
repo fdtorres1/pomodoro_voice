@@ -1,16 +1,28 @@
 import { useEffect, useState } from 'react';
 import { TimerManager } from '../services/TimerManager';
+import { SettingsManager } from '../services/SettingsManager';
 import { TimerMode, PomodoroPhase } from '../models/TimerState';
 
 interface TimerProps {
   timerManager: TimerManager;
+  settingsManager: SettingsManager;
 }
 
-export function Timer({ timerManager }: TimerProps) {
+export function Timer({ timerManager, settingsManager }: TimerProps) {
   const [state, setState] = useState(timerManager.getState());
+  const [settings, setSettings] = useState(settingsManager.getSettings());
   const [customMinutes, setCustomMinutes] = useState(
     state.mode === TimerMode.Custom ? state.customDuration / 60 : 25
   );
+
+  useEffect(() => {
+    // Update settings when they change (subscribe to changes if needed)
+    const updateSettings = () => {
+      setSettings(settingsManager.getSettings());
+    };
+    updateSettings();
+    // Settings don't change frequently, so we don't need to poll
+  }, [settingsManager]);
 
   useEffect(() => {
     const unsubscribe = timerManager.subscribe(() => {
@@ -35,9 +47,11 @@ export function Timer({ timerManager }: TimerProps) {
       return '';
     }
 
+    const sessionsBeforeLongBreak = settings.sessionsBeforeLongBreak;
+
     switch (state.phase) {
       case PomodoroPhase.Focus:
-        return `Focus Session ${state.focusCount + 1} of 4`;
+        return `Focus Session ${state.focusCount + 1} of ${sessionsBeforeLongBreak}`;
       case PomodoroPhase.ShortBreak:
         return 'Short Break';
       case PomodoroPhase.LongBreak:

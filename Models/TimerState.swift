@@ -49,13 +49,13 @@ struct TimerState: Codable {
         }
     }
     
-    mutating func nextPhase() {
+    mutating func nextPhase(sessionsBeforeLongBreak: Int = 4) {
         guard mode == .pomodoro else { return }
         
         switch phase {
         case .focus:
             focusCount += 1
-            if focusCount >= 4 {
+            if focusCount >= sessionsBeforeLongBreak {
                 phase = .longBreak
                 focusCount = 0
             } else {

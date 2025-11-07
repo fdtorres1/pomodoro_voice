@@ -6,6 +6,7 @@ export interface AppSettings {
   voiceID: string;
   volume: number; // 0.0 to 1.0
   voiceAlerts: VoiceAlertConfiguration;
+  sessionsBeforeLongBreak: number; // Number of focus sessions before long break (1-10)
 }
 
 export function createAppSettings(): AppSettings {
@@ -14,6 +15,7 @@ export function createAppSettings(): AppSettings {
     voiceID: '',
     volume: 0.8,
     voiceAlerts: createVoiceAlertConfiguration(),
+    sessionsBeforeLongBreak: 4, // Default to standard Pomodoro
   };
 }
 

@@ -50,7 +50,7 @@ export function getTotalDuration(state: TimerState): number {
   }
 }
 
-export function nextPhase(state: TimerState): TimerState {
+export function nextPhase(state: TimerState, sessionsBeforeLongBreak: number = 4): TimerState {
   if (state.mode !== TimerMode.Pomodoro) {
     return state;
   }
@@ -60,7 +60,7 @@ export function nextPhase(state: TimerState): TimerState {
   switch (state.phase) {
     case PomodoroPhase.Focus:
       newState.focusCount += 1;
-      if (newState.focusCount >= 4) {
+      if (newState.focusCount >= sessionsBeforeLongBreak) {
         newState.phase = PomodoroPhase.LongBreak;
         newState.focusCount = 0;
       } else {

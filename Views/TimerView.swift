@@ -7,6 +7,7 @@ import SwiftUI
 
 struct TimerView: View {
     @EnvironmentObject var timerManager: TimerManager
+    @EnvironmentObject var settingsManager: SettingsManager
     @State private var showCustomDurationPicker = false
     @State private var customMinutes: Int = 25
     
@@ -106,9 +107,10 @@ struct TimerView: View {
     }
     
     private var phaseDescription: String {
+        let sessionsBeforeLongBreak = settingsManager.settings.sessionsBeforeLongBreak
         switch timerManager.state.phase {
         case .focus:
-            return "Focus Session \(timerManager.state.focusCount + 1) of 4"
+            return "Focus Session \(timerManager.state.focusCount + 1) of \(sessionsBeforeLongBreak)"
         case .shortBreak:
             return "Short Break"
         case .longBreak:

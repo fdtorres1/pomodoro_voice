@@ -105,7 +105,8 @@ export class TimerManager {
 
   skip(): void {
     this.pause();
-    this.state = nextPhase(this.state);
+    const sessionsBeforeLongBreak = this.settingsManager?.getSettings().sessionsBeforeLongBreak ?? 4;
+    this.state = nextPhase(this.state, sessionsBeforeLongBreak);
     this.triggeredAlerts.clear();
     this.saveState();
     this.checkAndTriggerAlerts(true);
@@ -244,7 +245,8 @@ export class TimerManager {
 
     // Auto-advance to next phase
     if (this.state.mode === TimerMode.Pomodoro) {
-      this.state = nextPhase(this.state);
+      const sessionsBeforeLongBreak = this.settingsManager?.getSettings().sessionsBeforeLongBreak ?? 4;
+      this.state = nextPhase(this.state, sessionsBeforeLongBreak);
       this.triggeredAlerts.clear();
       // Check "start of break" alerts after transitioning
       this.checkAndTriggerAlerts(true);

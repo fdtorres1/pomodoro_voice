@@ -72,7 +72,8 @@ class TimerManager: ObservableObject {
     
     func skip() {
         pause()
-        state.nextPhase()
+        let sessionsBeforeLongBreak = settingsManager?.settings.sessionsBeforeLongBreak ?? 4
+        state.nextPhase(sessionsBeforeLongBreak: sessionsBeforeLongBreak)
         triggeredAlerts.removeAll() // Reset for new phase
         isTransitioning = true
         checkAndTriggerAlerts(isTransitioning: true)
@@ -194,7 +195,8 @@ class TimerManager: ObservableObject {
         
         // Auto-advance to next phase
         if state.mode == .pomodoro {
-            state.nextPhase()
+            let sessionsBeforeLongBreak = settingsManager?.settings.sessionsBeforeLongBreak ?? 4
+            state.nextPhase(sessionsBeforeLongBreak: sessionsBeforeLongBreak)
             triggeredAlerts.removeAll() // Reset for new phase
             // Check "start of break" alerts after transitioning
             isTransitioning = true

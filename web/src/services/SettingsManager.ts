@@ -28,6 +28,10 @@ export class SettingsManager {
         if (!parsed.voiceAlerts) {
           parsed.voiceAlerts = createAppSettings().voiceAlerts;
         }
+        // Ensure sessionsBeforeLongBreak exists (backward compatibility)
+        if (parsed.sessionsBeforeLongBreak === undefined) {
+          parsed.sessionsBeforeLongBreak = 4;
+        }
         return parsed;
       }
     } catch (error) {
