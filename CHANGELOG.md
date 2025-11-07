@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- Web app version built with React, TypeScript, and Vite
+- Cross-platform support (macOS native + web)
+- Responsive web UI with Tailwind CSS
+- Dark mode support for web app
+- Browser notifications support
+
 ## [0.1.0] - 2025-01-XX
 
 ### Added

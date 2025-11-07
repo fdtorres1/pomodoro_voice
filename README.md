@@ -1,6 +1,6 @@
 # PomodoroVoice
 
-A native macOS Pomodoro timer app with AI voice alerts powered by ElevenLabs.
+A Pomodoro timer app with AI voice alerts powered by ElevenLabs. Available as a native macOS app and as a web application.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
@@ -14,23 +14,55 @@ A native macOS Pomodoro timer app with AI voice alerts powered by ElevenLabs.
 - **Custom Timer**: Set any duration from 1-120 minutes
 - **Voice Alerts**: Configure up to 10 voice alerts per session type with custom messages
 - **ElevenLabs Integration**: Bring your own API key and voice ID
-- **Notifications**: macOS notifications when timers complete
-- **State Persistence**: Timer state persists across app restarts
-- **Fully Sandboxed**: Ready for App Store submission
+- **Notifications**: Desktop/browser notifications when timers complete
+- **State Persistence**: Timer state persists across app restarts/sessions
+- **Cross-Platform**: Available for macOS (native) and web browsers
 
-## Requirements
+## Platforms
 
+### macOS App
+
+A native macOS application built with SwiftUI.
+
+**Requirements:**
 - macOS 12.0 or later
-- Xcode 14.0 or later
+- Xcode 14.0 or later (for building)
 - Swift 5.7 or later
 - ElevenLabs API key (bring your own)
 
-## Setup
-
-1. Open the project in Xcode
+**Setup:**
+1. Open `PomodoroVoice.xcodeproj` in Xcode
 2. Configure your bundle identifier in project settings
 3. Ensure the entitlements file is properly configured
 4. Build and run
+
+See [XCODE_SETUP.md](./XCODE_SETUP.md) for detailed setup instructions.
+
+### Web App
+
+A modern web application built with React, TypeScript, and Vite.
+
+**Requirements:**
+- Modern web browser (Chrome, Firefox, Safari, Edge)
+- Node.js 18+ and npm (for development)
+- ElevenLabs API key (bring your own)
+
+**Setup:**
+```bash
+cd web
+npm install
+npm run dev
+```
+
+The app will be available at `http://localhost:5173`
+
+**Build for Production:**
+```bash
+cd web
+npm run build
+```
+
+The built files will be in the `dist/` directory, ready to deploy to any static hosting service (Vercel, Netlify, etc.).
 
 ## Usage
 
@@ -64,17 +96,66 @@ A native macOS Pomodoro timer app with AI voice alerts powered by ElevenLabs.
 - **Reset**: Reset current session
 - **Skip**: Skip to next phase (Pomodoro mode only)
 
+## Project Structure
+
+```
+pomodoro_voice/
+├── macos/                    # macOS Swift app
+│   ├── Models/
+│   ├── Services/
+│   ├── Views/
+│   └── PomodoroVoice.xcodeproj
+├── web/                      # Web app
+│   ├── src/
+│   │   ├── components/       # React components
+│   │   ├── models/          # TypeScript models
+│   │   ├── services/        # Business logic
+│   │   └── App.tsx
+│   ├── package.json
+│   └── vite.config.ts
+├── README.md
+├── LICENSE
+└── CHANGELOG.md
+```
+
 ## Privacy
 
 - No user tracking
 - No data collection
-- All settings stored locally
-- Fully sandboxed for security
+- All settings stored locally (UserDefaults on macOS, localStorage in web)
+- Fully sandboxed (macOS)
+- No analytics or telemetry
 
-## App Store Compliance
+## App Store Compliance (macOS)
 
 - Fully sandboxed
 - No tracking
 - Follows macOS Human Interface Guidelines
 - Native SwiftUI implementation
 
+## Development
+
+### macOS Development
+
+See [XCODE_SETUP.md](./XCODE_SETUP.md) for Xcode project setup.
+
+### Web Development
+
+The web app uses:
+- **React 19** with TypeScript
+- **Vite** for build tooling
+- **Tailwind CSS** for styling
+- **Web Audio API** for voice playback
+
+To contribute:
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test on both platforms if applicable
+5. Submit a pull request
+
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for more details.
+
+## License
+
+MIT License - see [LICENSE](./LICENSE) for details.

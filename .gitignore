@@ -113,3 +113,10 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+# Web app
+web/node_modules/
+web/dist/
+web/.vite/
+web/*.local
+web/.DS_Store
+
