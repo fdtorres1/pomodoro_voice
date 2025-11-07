@@ -1,10 +1,12 @@
 import { PomodoroPhase } from './TimerState';
 
-export enum AlertTrigger {
-  EndOfSession = 'End of Session',
-  StartOfBreak = 'Start of Break',
-  MinutesBefore = 'Minutes Before End',
-}
+export const AlertTrigger = {
+  EndOfSession: 'End of Session',
+  StartOfBreak: 'Start of Break',
+  MinutesBefore: 'Minutes Before End',
+} as const;
+
+export type AlertTrigger = typeof AlertTrigger[keyof typeof AlertTrigger];
 
 export interface VoiceAlert {
   id: string;
@@ -41,7 +43,7 @@ export function createVoiceAlertConfiguration(): VoiceAlertConfiguration {
 export function shouldTriggerAlert(
   alert: VoiceAlert,
   currentSeconds: number,
-  totalSeconds: number,
+  _totalSeconds: number,
   phase: PomodoroPhase,
   isTransitioning: boolean
 ): boolean {

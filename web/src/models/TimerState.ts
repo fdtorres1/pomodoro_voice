@@ -1,13 +1,17 @@
-export enum TimerMode {
-  Pomodoro = 'pomodoro',
-  Custom = 'custom',
-}
+export const TimerMode = {
+  Pomodoro: 'pomodoro',
+  Custom: 'custom',
+} as const;
 
-export enum PomodoroPhase {
-  Focus = 'focus',
-  ShortBreak = 'shortBreak',
-  LongBreak = 'longBreak',
-}
+export type TimerMode = typeof TimerMode[keyof typeof TimerMode];
+
+export const PomodoroPhase = {
+  Focus: 'focus',
+  ShortBreak: 'shortBreak',
+  LongBreak: 'longBreak',
+} as const;
+
+export type PomodoroPhase = typeof PomodoroPhase[keyof typeof PomodoroPhase];
 
 export interface TimerState {
   mode: TimerMode;

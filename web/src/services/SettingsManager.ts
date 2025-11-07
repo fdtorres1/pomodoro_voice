@@ -1,4 +1,5 @@
-import { AppSettings, createAppSettings } from '../models/Settings';
+import type { AppSettings } from '../models/Settings';
+import { createAppSettings } from '../models/Settings';
 
 const SETTINGS_KEY = 'pomodoro_voice_settings';
 

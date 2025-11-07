@@ -1,4 +1,5 @@
-import { VoiceAlertConfiguration, createVoiceAlertConfiguration } from './VoiceAlert';
+import type { VoiceAlertConfiguration } from './VoiceAlert';
+import { createVoiceAlertConfiguration } from './VoiceAlert';
 
 export interface AppSettings {
   elevenLabsAPIKey: string;

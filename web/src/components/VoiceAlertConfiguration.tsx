@@ -1,12 +1,10 @@
-import { useState } from 'react';
+import type { VoiceAlert } from '../models/VoiceAlert';
 import {
-  VoiceAlert,
-  VoiceAlertConfiguration,
   AlertTrigger,
   createVoiceAlert,
 } from '../models/VoiceAlert';
-import { SettingsManager } from '../services/SettingsManager';
-import { AppSettings } from '../models/Settings';
+import type { SettingsManager } from '../services/SettingsManager';
+import type { AppSettings } from '../models/Settings';
 import { ElevenLabsService } from '../services/ElevenLabsService';
 
 interface VoiceAlertConfigurationProps {
@@ -18,7 +16,6 @@ interface VoiceAlertConfigurationProps {
 export function VoiceAlertConfiguration({
   settings,
   updateSettings,
-  settingsManager,
 }: VoiceAlertConfigurationProps) {
   const elevenLabsService = new ElevenLabsService();
 
@@ -76,7 +73,7 @@ export function VoiceAlertConfiguration({
       );
     } catch (error) {
       console.error('Preview error:', error);
-      alert('Error previewing voice. Check your API key and Voice ID.');
+      window.alert('Error previewing voice. Check your API key and Voice ID.');
     }
   };
 

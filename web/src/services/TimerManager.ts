@@ -1,5 +1,5 @@
+import type { TimerState } from '../models/TimerState';
 import {
-  TimerState,
   TimerMode,
   PomodoroPhase,
   createInitialTimerState,
@@ -7,8 +7,8 @@ import {
   nextPhase,
   resetTimer,
 } from '../models/TimerState';
-import { VoiceAlert, shouldTriggerAlert } from '../models/VoiceAlert';
-import { AppSettings } from '../models/Settings';
+import type { VoiceAlert } from '../models/VoiceAlert';
+import { shouldTriggerAlert } from '../models/VoiceAlert';
 import { ElevenLabsService } from './ElevenLabsService';
 import { SettingsManager } from './SettingsManager';
 

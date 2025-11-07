@@ -5,7 +5,7 @@ export class ElevenLabsService {
     text: string,
     voiceID: string,
     apiKey: string,
-    volume: number
+    _volume: number
   ): Promise<ArrayBuffer> {
     if (!apiKey || !voiceID) {
       throw new Error('API key or Voice ID is missing');
