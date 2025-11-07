@@ -1,0 +1,60 @@
+name: PomodoroVoice
+options:
+  bundleIdPrefix: com.pomodorovoice
+  deploymentTarget:
+    macOS: "12.0"
+  developmentLanguage: en
+  xcodeVersion: "14.0"
+
+packages: {}
+
+targets:
+  PomodoroVoice:
+    type: application
+    platform: macOS
+    deploymentTarget: "12.0"
+    sources:
+      - path: .
+        excludes:
+          - "*.md"
+          - ".git"
+          - ".gitignore"
+          - "project.yml"
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.pomodorovoice.PomodoroVoice
+        MARKETING_VERSION: "0.1.0"
+        CURRENT_PROJECT_VERSION: "1"
+        MACOSX_DEPLOYMENT_TARGET: "12.0"
+        SWIFT_VERSION: "5.7"
+        CODE_SIGN_ENTITLEMENTS: PomodoroVoice.entitlements
+        CODE_SIGN_STYLE: Automatic
+        DEVELOPMENT_TEAM: ""
+        INFOPLIST_FILE: Info.plist
+        INFOPLIST_KEY_NSHumanReadableCopyright: "Copyright © 2025. All rights reserved."
+        INFOPLIST_KEY_NSPrincipalClass: NSApplication
+        INFOPLIST_KEY_NSSupportsAutomaticTermination: YES
+        INFOPLIST_KEY_NSSupportsSuddenTermination: YES
+        SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited)"
+        SWIFT_OPTIMIZATION_LEVEL: "-Onone"
+    info:
+      path: Info.plist
+      properties:
+        LSMinimumSystemVersion: "12.0"
+        NSPrincipalClass: NSApplication
+        NSSupportsAutomaticTermination: true
+        NSSupportsSuddenTermination: true
+    entitlements:
+      path: PomodoroVoice.entitlements
+    dependencies: []
+
+schemes:
+  PomodoroVoice:
+    build:
+      targets:
+        PomodoroVoice: all
+    run:
+      config: Debug
+    archive:
+      config: Release
+
