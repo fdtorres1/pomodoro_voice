@@ -78,10 +78,10 @@ export function VoiceAlertConfiguration({
   };
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6">
       {/* Focus Session Alerts */}
       <div>
-        <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">
+        <h3 className="text-lg font-semibold mb-3 text-gray-900 dark:text-white">
           Focus Session Alerts
         </h3>
         <div className="space-y-4">
@@ -101,20 +101,20 @@ export function VoiceAlertConfiguration({
           {settings.voiceAlerts.focusAlerts.length < 10 && (
             <button
               onClick={addFocusAlert}
-              className="flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300"
+              className="flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 mt-2"
             >
-              <span>+</span>
+              <span className="text-lg">+</span>
               <span>Add Alert</span>
             </button>
           )}
         </div>
       </div>
 
-      <div className="border-t border-gray-300 dark:border-gray-600"></div>
+      <div className="border-t border-gray-300 dark:border-gray-600 my-6"></div>
 
       {/* Break Alerts */}
       <div>
-        <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">
+        <h3 className="text-lg font-semibold mb-3 text-gray-900 dark:text-white">
           Break Alerts
         </h3>
         <div className="space-y-4">
@@ -134,9 +134,9 @@ export function VoiceAlertConfiguration({
           {settings.voiceAlerts.breakAlerts.length < 10 && (
             <button
               onClick={addBreakAlert}
-              className="flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300"
+              className="flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 mt-2"
             >
-              <span>+</span>
+              <span className="text-lg">+</span>
               <span>Add Alert</span>
             </button>
           )}
@@ -160,8 +160,8 @@ function VoiceAlertRow({
   onPreview,
 }: VoiceAlertRowProps) {
   return (
-    <div className="border border-gray-300 dark:border-gray-600 rounded-lg p-4 space-y-3">
-      <div className="flex items-center gap-4">
+    <div className="border border-gray-300 dark:border-gray-600 rounded-lg p-4 space-y-4">
+      <div className="flex items-center gap-3 flex-wrap">
         <input
           type="checkbox"
           checked={alert.enabled}
@@ -192,11 +192,11 @@ function VoiceAlertRow({
                   minutesBefore: Math.max(1, (alert.minutesBefore || 5) - 1),
                 })
               }
-              className="px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded"
+              className="px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
             >
               −
             </button>
-            <span className="w-16 text-center text-gray-900 dark:text-white">
+            <span className="w-16 text-center text-gray-900 dark:text-white text-sm">
               {alert.minutesBefore || 5} min
             </span>
             <button
@@ -206,28 +206,30 @@ function VoiceAlertRow({
                   minutesBefore: Math.min(60, (alert.minutesBefore || 5) + 1),
                 })
               }
-              className="px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded"
+              className="px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
             >
               +
             </button>
           </div>
         )}
 
-        <button
-          onClick={onPreview}
-          className="px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700"
-          title="Preview"
-        >
-          ▶
-        </button>
+        <div className="flex items-center gap-2 ml-auto">
+          <button
+            onClick={onPreview}
+            className="px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
+            title="Preview"
+          >
+            ▶
+          </button>
 
-        <button
-          onClick={onRemove}
-          className="px-3 py-1 bg-red-600 text-white rounded hover:bg-red-700"
-          title="Remove"
-        >
-          ×
-        </button>
+          <button
+            onClick={onRemove}
+            className="px-3 py-1 bg-red-600 text-white rounded hover:bg-red-700 transition-colors"
+            title="Remove"
+          >
+            ×
+          </button>
+        </div>
       </div>
 
       <textarea

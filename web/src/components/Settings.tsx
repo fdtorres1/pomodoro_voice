@@ -95,7 +95,7 @@ export function Settings({ settingsManager }: SettingsProps) {
           </button>
 
           {showVoiceAlerts && (
-            <div className="mt-4">
+            <div className="mt-6">
               <VoiceAlertConfiguration
                 settings={settings}
                 updateSettings={updateSettings}
